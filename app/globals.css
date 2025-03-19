@@ -38,7 +38,7 @@
 
 @layer base {
   * {
-    @apply border-border antialiased;
+    @apply antialiased;
   }
   html {
     @apply h-full;
