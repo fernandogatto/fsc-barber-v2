@@ -2,6 +2,7 @@ import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import { SearchIcon } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import BarbershopItem from "./_components/barbershop-item"
 import Header from "./_components/header"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
@@ -9,6 +10,7 @@ import { Badge } from "./_components/ui/badge"
 import { Button } from "./_components/ui/button"
 import { Card, CardContent } from "./_components/ui/card"
 import { Input } from "./_components/ui/input"
+import { quickSearchOptions } from "./_constants/search"
 import { getBarbershops } from "./_data-acess/barbershop/get-barbershops"
 import { getPopularBarbershops } from "./_data-acess/barbershop/get-popular-barbershops"
 
@@ -21,6 +23,7 @@ const Home = async () => {
       <Header />
 
       <div className="p-5">
+        {/* APRESENTAÇÃO */}
         <h2 className="text-xl font-bold">Olá,</h2>
         <p>
           <span className="capitalize">
@@ -32,6 +35,7 @@ const Home = async () => {
           </span>
         </p>
 
+        {/* BUSCA */}
         <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faça sua busca" />
           <Button>
@@ -39,6 +43,29 @@ const Home = async () => {
           </Button>
         </div>
 
+        {/* BUSCA RÁPIDA */}
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          {quickSearchOptions.map((option) => (
+            <Button
+              className="gap-2"
+              variant="secondary"
+              key={option.title}
+              asChild
+            >
+              <Link href={`/barbershops?service=${option.title}`}>
+                <Image
+                  src={option.imageUrl}
+                  width={16}
+                  height={16}
+                  alt={option.title}
+                />
+                {option.title}
+              </Link>
+            </Button>
+          ))}
+        </div>
+
+        {/* IMAGEM */}
         <div className="relative mt-6 h-[150px] w-full">
           <Image
             src="/banner-01.png"
