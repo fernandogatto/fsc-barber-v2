@@ -1,6 +1,7 @@
+import "server-only"
+
 import { BarbershopDto } from "@/app/_interfaces/barbershop/barbershop-dto"
 import { db } from "@/app/_lib/prisma"
-import "server-only"
 
 export const getPopularBarbershops = async (): Promise<BarbershopDto[]> => {
   const popularBarbershops = await db.barbershop.findMany({
