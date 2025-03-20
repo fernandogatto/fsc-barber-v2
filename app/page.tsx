@@ -74,21 +74,27 @@ const Home = async () => {
           />
         </div>
 
-        <TitleSection>Agendamentos</TitleSection>
-        <BookingItem />
-
-        <TitleSection>Recomendados</TitleSection>
-        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-          ))}
+        <div className="mt-6 space-y-3">
+          <TitleSection>Agendamentos</TitleSection>
+          <BookingItem />
         </div>
 
-        <TitleSection>Populares</TitleSection>
-        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {popularBarbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-          ))}
+        <div className="mt-6 space-y-3">
+          <TitleSection>Recomendados</TitleSection>
+          <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+            {barbershops.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 space-y-3">
+          <TitleSection>Populares</TitleSection>
+          <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+            {popularBarbershops.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

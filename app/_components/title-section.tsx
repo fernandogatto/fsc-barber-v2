@@ -6,9 +6,7 @@ interface TitleSectionProps {
 
 const TitleSection = ({ children }: TitleSectionProps) => {
   return (
-    <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-      {children}
-    </h2>
+    <h2 className="text-xs font-bold uppercase text-gray-400">{children}</h2>
   )
 }
 
