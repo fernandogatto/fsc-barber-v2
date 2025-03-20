@@ -83,7 +83,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
       </div>
 
       {/* CONTATO */}
-      <div className="space-y-3 p-5">
+      <div className="space-y-3 border-t border-solid p-5">
         <TitleSection>Contato</TitleSection>
         {barbershop.phones.map((phone) => (
           <PhoneItem key={phone} phone={phone} />
