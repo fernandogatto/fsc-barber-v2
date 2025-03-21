@@ -12,5 +12,6 @@ export const getBarbershops = async (): Promise<BarbershopDto[]> => {
     address: barbershop.address,
     imageUrl: barbershop.imageUrl,
     phones: barbershop.phones,
-  }))
+    description: barbershop.description,
+  })) as BarbershopDto[]
 }

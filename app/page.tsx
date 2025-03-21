@@ -14,6 +14,7 @@ import { quickSearchOptions } from "./_constants/search"
 import { getBarbershops } from "./_data-acess/barbershop/get-barbershops"
 import { getPopularBarbershops } from "./_data-acess/barbershop/get-popular-barbershops"
 import { authOptions } from "./_lib/auth"
+import Search from "./_components/search"
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -41,10 +42,7 @@ const Home = async () => {
 
         {/* BUSCA */}
         <div className="mt-6 flex items-center gap-2">
-          <Input placeholder="Faça sua busca" />
-          <Button>
-            <SearchIcon size={20} />
-          </Button>
+          <Search />
         </div>
 
         {/* BUSCA RÁPIDA */}
