@@ -1,10 +1,12 @@
-import { CalendarIcon, HomeIcon, LogOutIcon } from "lucide-react"
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { quickSearchOptions } from "../_constants/search"
 import { Button } from "./ui/button"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { Avatar, AvatarImage } from "./ui/avatar"
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
+import SignInDialog from "./sign-in-dialog"
 
 const SidebarSheetContent = () => {
   return (
@@ -14,7 +16,7 @@ const SidebarSheetContent = () => {
       </SheetHeader>
 
       <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <Avatar>
             <AvatarImage
               src={
@@ -28,7 +30,21 @@ const SidebarSheetContent = () => {
             <p className="font-bold">Nome</p>
             <p className="text-xs">email</p>
           </div>
-        </div>
+        </div> */}
+
+        <>
+          <h2 className="font-bold">Olá, faça seu login!</h2>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="icon">
+                <LogInIcon />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="w-[90%]">
+              <SignInDialog />
+            </DialogContent>
+          </Dialog>
+        </>
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid py-5">
