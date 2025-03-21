@@ -1,9 +1,10 @@
-import Link from "next/link"
-import { Card, CardContent } from "./ui/card"
-import Image from "next/image"
-import { Button } from "./ui/button"
-import { Sheet, SheetTrigger } from "./ui/sheet"
 import { MenuIcon } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import SidebarSheetContent from "./sidebar-sheet"
+import { Button } from "./ui/button"
+import { Card, CardContent } from "./ui/card"
+import { Sheet, SheetTrigger } from "./ui/sheet"
 
 const Header = () => {
   return (
@@ -15,10 +16,16 @@ const Header = () => {
 
         <Sheet>
           <SheetTrigger asChild>
-            <Button size="icon" variant="outline">
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute right-4 top-4"
+            >
               <MenuIcon />
             </Button>
           </SheetTrigger>
+
+          <SidebarSheetContent />
         </Sheet>
       </CardContent>
     </Card>

@@ -1,5 +1,6 @@
 import PhoneItem from "@/app/_components/phone-item"
 import BarbershopServiceItem from "@/app/_components/service-item"
+import SidebarSheetContent from "@/app/_components/sidebar-sheet"
 import TitleSection from "@/app/_components/title-section"
 import { Button } from "@/app/_components/ui/button"
 import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
@@ -50,7 +51,8 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
               <MenuIcon />
             </Button>
           </SheetTrigger>
-          {/* <SidebarSheet /> */}
+
+          <SidebarSheetContent />
         </Sheet>
       </div>
 
