@@ -1,3 +1,5 @@
+"use client"
+
 import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -7,8 +9,12 @@ import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import SignInDialog from "./sign-in-dialog"
+import { signOut, useSession } from "next-auth/react"
 
 const SidebarSheetContent = () => {
+  const { data } = useSession()
+  const handleLogoutClick = () => signOut()
+
   return (
     <SheetContent className="overflow-y-auto">
       <SheetHeader>
@@ -16,35 +22,35 @@ const SidebarSheetContent = () => {
       </SheetHeader>
 
       <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
-        {/* <div className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage
-              src={
-                "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
-              }
-              className="object-cover"
-            />
-          </Avatar>
+        {data?.user ? (
+          <div className="flex items-center gap-2">
+            <Avatar>
+              <AvatarImage
+                src={data?.user?.image ?? ""}
+                className="object-cover"
+              />
+            </Avatar>
 
-          <div>
-            <p className="font-bold">Nome</p>
-            <p className="text-xs">email</p>
+            <div>
+              <p className="font-bold">{data.user.name}</p>
+              <p className="text-xs">{data.user.email}</p>
+            </div>
           </div>
-        </div> */}
-
-        <>
-          <h2 className="font-bold">Olá, faça seu login!</h2>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="icon">
-                <LogInIcon />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="w-[90%]">
-              <SignInDialog />
-            </DialogContent>
-          </Dialog>
-        </>
+        ) : (
+          <>
+            <h2 className="font-bold">Olá, faça seu login!</h2>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="icon">
+                  <LogInIcon />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="w-[90%]">
+                <SignInDialog />
+              </DialogContent>
+            </Dialog>
+          </>
+        )}
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid py-5">
@@ -83,7 +89,11 @@ const SidebarSheetContent = () => {
       </div>
 
       <div className="flex flex-col gap-2 py-5">
-        <Button variant="ghost" className="justify-start gap-2">
+        <Button
+          variant="ghost"
+          className="justify-start gap-2"
+          onClick={handleLogoutClick}
+        >
           <LogOutIcon size={18} />
           Sair da conta
         </Button>

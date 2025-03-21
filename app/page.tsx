@@ -1,6 +1,7 @@
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import { SearchIcon } from "lucide-react"
+import { getServerSession } from "next-auth"
 import Image from "next/image"
 import Link from "next/link"
 import BarbershopItem from "./_components/barbershop-item"
@@ -12,8 +13,10 @@ import { Input } from "./_components/ui/input"
 import { quickSearchOptions } from "./_constants/search"
 import { getBarbershops } from "./_data-acess/barbershop/get-barbershops"
 import { getPopularBarbershops } from "./_data-acess/barbershop/get-popular-barbershops"
+import { authOptions } from "./_lib/auth"
 
 const Home = async () => {
+  const session = await getServerSession(authOptions)
   const barbershops = await getBarbershops()
   const popularBarbershops = await getPopularBarbershops()
 
@@ -23,7 +26,9 @@ const Home = async () => {
 
       <div className="p-5">
         {/* APRESENTAÇÃO */}
-        <h2 className="text-xl font-bold">Olá,</h2>
+        <h2 className="text-xl font-bold">
+          Olá, {session?.user ? session.user.name : "bem vindo"}!
+        </h2>
         <p>
           <span className="capitalize">
             {format(new Date(), "EEEE, dd", { locale: ptBR })}
