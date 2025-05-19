@@ -12,6 +12,10 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+  session: {
+    maxAge: 2 * 60 * 60, // 2 horas
+    updateAge: 30 * 60, // Atualiza o token a cada 30 minutos
+  },
   callbacks: {
     async session({ session, user }) {
       session.user = {
@@ -21,4 +25,5 @@ export const authOptions: AuthOptions = {
       return session
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 }

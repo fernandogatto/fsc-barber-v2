@@ -1,25 +1,25 @@
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { SearchIcon } from "lucide-react"
 import { getServerSession } from "next-auth"
 import Image from "next/image"
 import Link from "next/link"
 import BarbershopItem from "./_components/barbershop-item"
 import BookingItem from "./_components/booking-item"
 import Header from "./_components/header"
+import Search from "./_components/search"
 import TitleSection from "./_components/title-section"
 import { Button } from "./_components/ui/button"
-import { Input } from "./_components/ui/input"
 import { quickSearchOptions } from "./_constants/search"
 import { getBarbershops } from "./_data-acess/barbershop/get-barbershops"
 import { getPopularBarbershops } from "./_data-acess/barbershop/get-popular-barbershops"
+import { getConfirmedBookings } from "./_data-acess/booking/get-confirmed-bookings"
 import { authOptions } from "./_lib/auth"
-import Search from "./_components/search"
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
   const barbershops = await getBarbershops()
   const popularBarbershops = await getPopularBarbershops()
+  const bookings = await getConfirmedBookings()
 
   return (
     <div>
@@ -79,7 +79,9 @@ const Home = async () => {
 
         <div className="mt-6 space-y-3">
           <TitleSection>Agendamentos</TitleSection>
-          <BookingItem />
+          {bookings.map((booking) => (
+            <BookingItem key={booking.id} booking={booking} />
+          ))}
         </div>
 
         <div className="mt-6 space-y-3">
