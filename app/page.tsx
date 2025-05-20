@@ -19,7 +19,7 @@ const Home = async () => {
   const session = await getServerSession(authOptions)
   const barbershops = await getBarbershops()
   const popularBarbershops = await getPopularBarbershops()
-  const bookings = await getConfirmedBookings()
+  const confirmedBookings = await getConfirmedBookings()
 
   return (
     <div>
@@ -77,12 +77,18 @@ const Home = async () => {
           />
         </div>
 
-        <div className="mt-6 space-y-3">
-          <TitleSection>Agendamentos</TitleSection>
-          {bookings.map((booking) => (
-            <BookingItem key={booking.id} booking={booking} />
-          ))}
-        </div>
+        {confirmedBookings.length > 0 && (
+          <>
+            <div className="mt-6 space-y-3">
+              <TitleSection>Agendamentos</TitleSection>
+              <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+                {confirmedBookings.map((booking) => (
+                  <BookingItem key={booking.id} booking={booking} />
+                ))}
+              </div>
+            </div>
+          </>
+        )}
 
         <div className="mt-6 space-y-3">
           <TitleSection>Recomendados</TitleSection>
