@@ -102,7 +102,7 @@ Home page:
   alt="Home"
   title="Home"
   src=".github/home-page.png"
-  width="800"
+  width="400"
 />
 
 Menu:
@@ -111,7 +111,7 @@ Menu:
   alt="Menu"
   title="Menu"
   src=".github/sidebar.png"
-  width="800"
+  width="400"
 />
 
 Bookings page:
@@ -120,7 +120,7 @@ Bookings page:
   alt="Bookings"
   title="Bookings"
   src=".github/bookings-page.png"
-  width="800"
+  width="400"
 />
 
 Booking details:
@@ -129,7 +129,7 @@ Booking details:
   alt="Bookings"
   title="Bookings"
   src=".github/booking-details.png"
-  width="800"
+  width="400"
 />
 
 Confirm dialog:
@@ -138,7 +138,7 @@ Confirm dialog:
   alt="Confirm dialog"
   title="Confirm dialog"
   src=".github/confirm-dialog.png"
-  width="800"
+  width="400"
 />
 
 Barbershop page:
@@ -147,7 +147,7 @@ Barbershop page:
   alt="Barbershop page"
   title="Barbershop page"
   src=".github/barber-page.png"
-  width="800"
+  width="400"
 />
 
 ## 🎨 Layout
